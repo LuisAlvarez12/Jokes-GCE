@@ -23,7 +23,7 @@ android {
             applicationId "com.udacity.flavors.free"
         }
         paid {
-            applicationId "com.udacity.flavors.com.udacity.flavors.free"
+            applicationId "com.udacity.flavors.paid"
         }
     }
 }

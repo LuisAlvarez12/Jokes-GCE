@@ -5,18 +5,15 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.comedyview.ComedyView;
 import com.example.luisalvarez.myapplication.backend.myApi.MyApi;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.extensions.android.json.AndroidJsonFactory;
-import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
-import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
-
 
 
 import java.io.IOException;
@@ -56,10 +53,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tellJoke(View view) {
-//        LaughFactory laughFactory = new LaughFactory();
-//        Intent intent = new Intent(this, ComedyView.class);
-//        intent.putExtra("joke",laughFactory.generateJoke());
-//        startActivity(intent);
+
     }
 
     class EndpointsAsyncTask extends AsyncTask<Context, Void, String> {
@@ -72,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
                 MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(), new AndroidJsonFactory(), null)
                         .setRootUrl("https://jokegetter-163622.appspot.com/_ah/api/");
                 // end options for devappserver
-
                 myApiService = builder.build();
                 context = params[0];
 
@@ -85,10 +78,12 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+
         @Override
         protected void onPostExecute(String result) {
-            Log.d("sync","Passed!");
-            Toast.makeText(context, result, Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(getApplicationContext(), ComedyView.class);
+            intent.putExtra("joke",result);
+            startActivity(intent);
         }
     }
 
