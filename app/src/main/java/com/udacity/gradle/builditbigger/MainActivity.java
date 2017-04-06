@@ -25,8 +25,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        EndpointsAsyncTask endpointsAsyncTask = new EndpointsAsyncTask();
-        endpointsAsyncTask.execute(this);
     }
 
 
@@ -56,36 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    class EndpointsAsyncTask extends AsyncTask<Context, Void, String> {
-        private  MyApi myApiService = null;
-        private Context context;
 
-        @Override
-        protected String doInBackground(Context... params) {
-            if(myApiService == null) {  // Only do this once
-                MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(), new AndroidJsonFactory(), null)
-                        .setRootUrl("https://jokegetter-163622.appspot.com/_ah/api/");
-                // end options for devappserver
-                myApiService = builder.build();
-                context = params[0];
-
-            }
-
-            try {
-                return myApiService.generateJoke().execute().getData();
-            } catch (IOException e) {
-                return e.getMessage();
-            }
-        }
-
-
-        @Override
-        protected void onPostExecute(String result) {
-            Intent intent = new Intent(getApplicationContext(), ComedyView.class);
-            intent.putExtra("joke",result);
-            startActivity(intent);
-        }
-    }
 
 
 }
