@@ -6,6 +6,7 @@ package com.udacity.flavors.paid;
  */
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,7 @@ public class MainActivityFragment extends android.app.Fragment {
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_main, container, false);
         Button toJoke = (Button)root.findViewById(R.id.btn_joke);
+
         toJoke.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

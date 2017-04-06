@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+        <string-array name="joke_set">
+            <item>@string/joke_1</item>
+            <item>@string/joke_2</item>
+            <item>@string/joke_3</item>
+            <item>@string/joke_4</item>
+            <item>@string/joke_5</item>
+            <item>@string/joke_6</item>
+            <item>@string/joke_7</item>
+            <item>@string/joke_8</item>
+            <item>@string/joke_9</item>
+            <item>@string/joke_10</item>
+        </string-array>
+</resources>
