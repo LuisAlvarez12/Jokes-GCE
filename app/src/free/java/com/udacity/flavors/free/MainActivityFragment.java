@@ -11,12 +11,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.InterstitialAd;
+import com.ldoublem.loadingviewlib.LVCircularCD;
 import com.udacity.gradle.builditbigger.GCEAsyncTask;
 import com.udacity.gradle.builditbigger.R;
 
@@ -27,6 +30,7 @@ import com.udacity.gradle.builditbigger.R;
 public class MainActivityFragment extends android.app.Fragment {
 
     private InterstitialAd mInterstitialAd;
+    private LVCircularCD anim;
 
     public MainActivityFragment() {
     }
@@ -35,8 +39,9 @@ public class MainActivityFragment extends android.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_main, container, false);
+        TextView mToJoke = (TextView)root.findViewById(R.id.btn_joke);
 
-        Button mToJoke = (Button)root.findViewById(R.id.btn_joke);
+        anim = (LVCircularCD)root.findViewById(R.id.lv_circularCD);
 
         // Create an ad request. Check logcat output for the hashed device ID to
         // get test ads on a physical device. e.g.
@@ -56,6 +61,7 @@ public class MainActivityFragment extends android.app.Fragment {
     private void InstantiateBanner(AdView mAdView) {
         AdRequest adRequest = new AdRequest.Builder()
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .addTestDevice(getActivity().getResources().getString(R.string.ad_id))
                 .build();
         mAdView.loadAd(adRequest);
     }
@@ -67,7 +73,7 @@ public class MainActivityFragment extends android.app.Fragment {
         mInterstitialAd.setAdListener(new AdListener() {
             @Override
             public void onAdClosed() {
-                GCEAsyncTask asyncTask = new GCEAsyncTask();
+                GCEAsyncTask asyncTask = new GCEAsyncTask(anim);
                 asyncTask.execute(getActivity());
             }
 
@@ -75,7 +81,6 @@ public class MainActivityFragment extends android.app.Fragment {
             public void onAdLoaded() {
                 super.onAdLoaded();
                     mInterstitialAd.show();
-                    Log.d("ad","still working");
             }
         });
 
@@ -84,7 +89,7 @@ public class MainActivityFragment extends android.app.Fragment {
 
     private void requestNewInterstitial() {
         AdRequest adRequest = new AdRequest.Builder()
-                .addTestDevice("SEE_YOUR_LOGCAT_TO_GET_YOUR_DEVICE_ID")
+                .addTestDevice(getActivity().getResources().getString(R.string.logger))
                 .build();
 
         mInterstitialAd.loadAd(adRequest);

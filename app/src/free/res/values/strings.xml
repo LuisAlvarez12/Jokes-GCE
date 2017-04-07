@@ -2,8 +2,9 @@
 <resources>
 
     <string name="button_text">Tell a yoke</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="logger">SEE_YOUR_LOGCAT_TO_GET_YOUR_DEVICE_ID</string>
+    <string name="ad_id">90E5761ACFF32A5A9D64016148D7B34D</string>
 
+    90E5761ACFF32A5A9D64016148D7B34D
 </resources>

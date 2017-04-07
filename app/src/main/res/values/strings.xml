@@ -16,8 +16,10 @@
     <string name="joke_9">Why was 6 afraid of 7?0Because 7 ate the headphone jack.</string>
     <string name="joke_10">Why can\'t you hear a pterodactyl go to the bathroom?0Because they are dead.</string>
 
+    <string name="btn_show_jokes">Show me the jokes!</string>
+    <string name="txt_intro">Look,\n We all like jokes, so I handpicked some of the best jokes on the planet. \nAll YOU(the person the front camera of this device is looking at) have to do is tap below to get it started.\n All hail the Google Cloud.</string>
 
-
+    <string name="key_intent">joke</string>
 
 
 

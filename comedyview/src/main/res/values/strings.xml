@@ -2,4 +2,6 @@
     <string name="app_name">ComedyView</string>
     <string name="title_activity_comedy_view">ComedyView</string>
     <string name="action_settings">Settings</string>
+    <string name="key_intent">joke</string>
+
 </resources>
