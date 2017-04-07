@@ -182,5 +182,9 @@
     <orderEntry type="library" exported="" name="constraint-layout-solver-1.0.2" level="project" />
     <orderEntry type="module" module-name="comedyview" exported="" />
     <orderEntry type="module" module-name="backend" exported="" />
+    <orderEntry type="module" module-name="comedyview" exported="" />
+    <orderEntry type="module" module-name="backend" exported="" />
+    <orderEntry type="module" module-name="comedyview" exported="" />
+    <orderEntry type="module" module-name="backend" exported="" />
   </component>
 </module>

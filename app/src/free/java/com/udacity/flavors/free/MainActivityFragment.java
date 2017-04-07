@@ -59,6 +59,7 @@ public class MainActivityFragment extends android.app.Fragment {
     }
 
     private void InstantiateBanner(AdView mAdView) {
+        //create bottom banner
         AdRequest adRequest = new AdRequest.Builder()
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .addTestDevice(getActivity().getResources().getString(R.string.ad_id))
@@ -67,13 +68,15 @@ public class MainActivityFragment extends android.app.Fragment {
     }
 
     private void InstantiateAd() {
+        //create popup ad
         mInterstitialAd = new InterstitialAd(getActivity());
         mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
 
         mInterstitialAd.setAdListener(new AdListener() {
             @Override
             public void onAdClosed() {
-                GCEAsyncTask asyncTask = new GCEAsyncTask(anim);
+                //start the async for next page
+                GCEAsyncTask asyncTask = new GCEAsyncTask(anim,getActivity().getResources().getString(R.string.root_url));
                 asyncTask.execute(getActivity());
             }
 
@@ -88,6 +91,7 @@ public class MainActivityFragment extends android.app.Fragment {
     }
 
     private void requestNewInterstitial() {
+        //request a new add to be loaded
         AdRequest adRequest = new AdRequest.Builder()
                 .addTestDevice(getActivity().getResources().getString(R.string.logger))
                 .build();

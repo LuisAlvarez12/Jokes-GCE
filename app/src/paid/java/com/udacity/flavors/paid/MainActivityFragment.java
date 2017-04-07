@@ -41,7 +41,8 @@ public class MainActivityFragment extends android.app.Fragment {
         toJoke.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                GCEAsyncTask gceAsyncTask = new GCEAsyncTask(anim);
+                //start the good stuff
+                GCEAsyncTask gceAsyncTask = new GCEAsyncTask(anim,getActivity().getResources().getString(R.string.root_url));
                 gceAsyncTask.execute(getActivity());
             }
         });

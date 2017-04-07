@@ -26,21 +26,21 @@ public class GCEAsyncTask extends AsyncTask<Context, Void, String> {
     private MyApi myApiService = null;
     private Context context;
     private LVCircularCD animation;
+    private String root;
 
 
-    public GCEAsyncTask(LVCircularCD circularCD){
-        Log.d("animation","created");
+    public GCEAsyncTask(LVCircularCD circularCD, String r){
         animation = circularCD;
-
-
+        root = r;
     }
 
 
     @Override
     protected String doInBackground(Context... params) {
         if(myApiService == null) {  // Only do this once
+            //gce endpoint
             MyApi.Builder builder = new MyApi.Builder(AndroidHttp.newCompatibleTransport(), new AndroidJsonFactory(), null)
-                    .setRootUrl("https://jokegetter-163622.appspot.com/_ah/api/");
+                    .setRootUrl(root);
             // end options for devappserver
             myApiService = builder.build();
             context = params[0];
@@ -57,7 +57,7 @@ public class GCEAsyncTask extends AsyncTask<Context, Void, String> {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-        Log.d("animation","started");
+        //set up animation for loading
         animation.setVisibility(View.VISIBLE);
         animation.setViewColor(rgb(22, 160, 133));
         animation.startAnim();
@@ -65,7 +65,7 @@ public class GCEAsyncTask extends AsyncTask<Context, Void, String> {
 
     @Override
     protected void onPostExecute(String result) {
-        Log.d("animation","ended");
+        //remove animation
         animation.stopAnim();
         animation.setVisibility(View.GONE);
         Intent intent = new Intent(context, ComedyView.class);
