@@ -63,6 +63,8 @@ public class MainActivityFragment extends android.app.Fragment {
         AdRequest adRequest = new AdRequest.Builder()
                 .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
                 .addTestDevice(getActivity().getResources().getString(R.string.ad_id))
+                .addTestDevice(getActivity().getResources().getString(R.string.logger))
+                .addTestDevice("22E4B587EA9EAB5E79CA4BD24BE9098B")
                 .build();
         mAdView.loadAd(adRequest);
     }
@@ -94,6 +96,7 @@ public class MainActivityFragment extends android.app.Fragment {
         //request a new add to be loaded
         AdRequest adRequest = new AdRequest.Builder()
                 .addTestDevice(getActivity().getResources().getString(R.string.logger))
+                .addTestDevice("22E4B587EA9EAB5E79CA4BD24BE9098B")
                 .build();
 
         mInterstitialAd.loadAd(adRequest);

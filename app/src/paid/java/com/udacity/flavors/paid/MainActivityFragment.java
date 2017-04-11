@@ -6,17 +6,10 @@ package com.udacity.flavors.paid;
  */
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 import com.ldoublem.loadingviewlib.LVCircularCD;
 import com.udacity.gradle.builditbigger.GCEAsyncTask;
 import com.udacity.gradle.builditbigger.R;
